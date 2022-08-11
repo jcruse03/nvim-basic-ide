@@ -17,20 +17,31 @@ vim.g.mapleader = " "
 
 -- Normal --
 -- Better window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+keymap("n", "<c-h>", "<c-w>h", opts)
+keymap("n", "<c-j>", "<c-w>j", opts)
+keymap("n", "<c-k>", "<c-w>k", opts)
+keymap("n", "<c-l>", "<c-w>l", opts)
+
+-- And window navigation with arrows
+keymap("n", "<c-Left>", "<c-w>h", opts)
+keymap("n", "<c-Down>", "<c-w>j", opts)
+keymap("n", "<c-Up>", "<c-w>k", opts)
+keymap("n", "<c-Right>", "<c-w>l", opts)
 
 -- Resize with arrows
-keymap("n", "<C-Up>", ":resize -2<CR>", opts)
-keymap("n", "<C-Down>", ":resize +2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
+keymap("n", "<C-S-K>", ":resize +2<CR>", opts)   -- <CR> stands for Carage Return, means press enter.
+keymap("n", "<C-S-J>", ":resize -2<CR>", opts)
+keymap("n", "<C-S-H>", ":vertical resize -2<CR>", opts)
+keymap("n", "<C-S-L>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
+
+-- Navigate buffers with arrows
+keymap("n", "<C-S-Right>", ":bnext<CR>", opts)
+keymap("n", "<C-S-Left>", ":bprevious<CR>", opts)
+
 
 -- Clear highlights
 keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
