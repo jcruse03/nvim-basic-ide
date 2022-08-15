@@ -1,7 +1,7 @@
 -- Make sure to install colorschemes in pluggins.lua
 
 -- Set colorscheme here
-local colorscheme = 'onedark'
+local colorscheme = 'monokaipro'
 
 -- Do not change here. If scheme_type is not detected,
 -- set it in manualy in colorscheme setting below
@@ -73,6 +73,14 @@ if colorscheme == 'onedark' then
 elseif colorscheme == 'tokyonight' then
   scheme_type = 'vim'
   vim.g.tokyonight_style = "night"
+
+-- Monokai https://github.com/tanvirtin/monokai.nvim
+elseif colorscheme == 'monokaipro' then
+  scheme_type = 'vim'
+  -- Filter options: default, machine, ristretto, octogon spectrum, and classic
+  vim.g.monokaipro_filter = 'default'
+  vim.g.monokaipro_transparent = 'true'
+  vim.g.monokaipro_hide_inactive_statusline = 'false'
 else
 end
 

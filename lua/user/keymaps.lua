@@ -23,24 +23,30 @@ keymap("n", "<c-k>", "<c-w>k", opts)
 keymap("n", "<c-l>", "<c-w>l", opts)
 
 -- And window navigation with arrows
-keymap("n", "<c-Left>", "<c-w>h", opts)
-keymap("n", "<c-Down>", "<c-w>j", opts)
-keymap("n", "<c-Up>", "<c-w>k", opts)
-keymap("n", "<c-Right>", "<c-w>l", opts)
+keymap("n", "<c-Left>",   "<c-w>h", opts)
+keymap("n", "<c-Down>",   "<c-w>j", opts)
+keymap("n", "<c-Up>",     "<c-w>k", opts)
+keymap("n", "<c-Right>",  "<c-w>l", opts)
 
--- Resize with arrows
+-- Resize window
 keymap("n", "<C-S-K>", ":resize +2<CR>", opts)   -- <CR> stands for Carage Return, means press enter.
 keymap("n", "<C-S-J>", ":resize -2<CR>", opts)
 keymap("n", "<C-S-H>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-S-L>", ":vertical resize +2<CR>", opts)
+
+-- Resize window with arrows
+keymap("n", "<C-S-Up>",     ":resize +2<CR>", opts)   -- <CR> stands for Carage Return, means press enter.
+keymap("n", "<C-S-Down",    ":resize -2<CR>", opts)
+keymap("n", "<C-S-Left>",   ":vertical resize -2<CR>", opts)
+keymap("n", "<C-S-Right>",  ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Navigate buffers with arrows
-keymap("n", "<C-S-Right>", ":bnext<CR>", opts)
-keymap("n", "<C-S-Left>", ":bprevious<CR>", opts)
+keymap("n", "<S-Right>",  ":bnext<CR>", opts)
+keymap("n", "<S-Left>",   ":bprevious<CR>", opts)
 
 
 -- Clear highlights
