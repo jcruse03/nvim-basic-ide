@@ -23,7 +23,8 @@ if not lspconfig_status_ok then
 end
 
 local opts = {}
-
+-- See link for more settings for each lsp server. uses lspconfig plugin.
+-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 for _, server in pairs(servers) do
   opts = {
     on_attach = require("user.lsp.handlers").on_attach,
@@ -38,6 +39,11 @@ for _, server in pairs(servers) do
   if server == "pyright" then
     local pyright_opts = require "user.lsp.settings.pyright"
     opts = vim.tbl_deep_extend("force", pyright_opts, opts)
+  end
+
+  if server == "pylsp" then
+    local pylsp = require "user.lsp.settings.pylsp"
+    opts = vim.tbl_deep_extend("force", pylsp, opts)
   end
 
   lspconfig[server].setup(opts)

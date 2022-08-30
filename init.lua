@@ -1,6 +1,3 @@
--- Each pluggin needs to be sourced here, this is the folder location
--- the preceeding "lua" and ending "lua can be omitted."
--- ex: lua/user/options.lua == "user.options"
 require "user.options"
 require "user.keymaps"
 require "user.plugins"
