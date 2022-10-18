@@ -112,3 +112,33 @@ keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
   -- keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
   -- keymap(bufnr, "n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
   -- keymap(bufnr, "n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
+
+-- Folding 
+  -- See: https://neovim.io/doc/user/fold.html
+  -- "zf" create fold, use visual mode or zf + motion.
+  -- "zc" close fold
+  -- "zo" open_fold
+  -- "zd" delete 1 fold under curser.
+
+-- Marks
+-- ma	set mark a at current cursor location
+-- 'a	jump to line of mark a (first non-blank character in line)
+-- `a	jump to position (line and column) of mark a
+-- d'a	delete from current line to line of mark a
+-- d`a	delete from current cursor position to position of mark a
+-- c'a	change text from current line to line of mark a
+-- y`a	yank text to unnamed buffer from cursor to position of mark a
+-- :marks	list all the current marks
+-- :marks aB	list marks a, B
+
+-- NERDTree Menu. Use j/k/enter and the shortcuts indicated
+-- ==========================================================
+-- > (a)dd a childnode
+--   (m)ove the current node
+--   (d)elete the current node
+--   (r)eveal in Finder the current node
+--   (o)pen the current node with system editor
+--   (q)uicklook the current node
+--   (c)opy the current node
+-- Add a childnode
+
