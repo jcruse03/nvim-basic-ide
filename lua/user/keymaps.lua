@@ -23,31 +23,30 @@ keymap("n", "<c-k>", "<c-w>k", opts)
 keymap("n", "<c-l>", "<c-w>l", opts)
 
 -- And window navigation with arrows
-keymap("n", "<c-Left>",   "<c-w>h", opts)
-keymap("n", "<c-Down>",   "<c-w>j", opts)
-keymap("n", "<c-Up>",     "<c-w>k", opts)
-keymap("n", "<c-Right>",  "<c-w>l", opts)
+keymap("n", "<c-Left>", "<c-w>h", opts)
+keymap("n", "<c-Down>", "<c-w>j", opts)
+keymap("n", "<c-Up>", "<c-w>k", opts)
+keymap("n", "<c-Right>", "<c-w>l", opts)
 
 -- Resize window
-keymap("n", "<C-S-K>", ":resize +2<CR>", opts)   -- <CR> stands for Carage Return, means press enter.
+keymap("n", "<C-S-K>", ":resize +2<CR>", opts) -- <CR> stands for Carage Return, means press enter.
 keymap("n", "<C-S-J>", ":resize -2<CR>", opts)
 keymap("n", "<C-S-H>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-S-L>", ":vertical resize +2<CR>", opts)
 
 -- Resize window with arrows
-keymap("n", "<C-S-Up>",     ":resize +2<CR>", opts)   -- <CR> stands for Carage Return, means press enter.
-keymap("n", "<C-S-Down",    ":resize -2<CR>", opts)
-keymap("n", "<C-S-Left>",   ":vertical resize -2<CR>", opts)
-keymap("n", "<C-S-Right>",  ":vertical resize +2<CR>", opts)
+keymap("n", "<C-S-Up>", ":resize +2<CR>", opts) -- <CR> stands for Carage Return, means press enter.
+keymap("n", "<C-S-Down", ":resize -2<CR>", opts)
+keymap("n", "<C-S-Left>", ":vertical resize -2<CR>", opts)
+keymap("n", "<C-S-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Navigate buffers with arrows
-keymap("n", "<S-Right>",  ":bnext<CR>", opts)
-keymap("n", "<S-Left>",   ":bprevious<CR>", opts)
-
+keymap("n", "<S-Right>", ":bnext<CR>", opts)
+keymap("n", "<S-Left>", ":bprevious<CR>", opts)
 
 -- Clear highlights
 keymap("n", "<leader>h", "<cmd>nohlsearch<CR>", opts)
@@ -67,6 +66,18 @@ keymap("i", "jk", "<ESC>", opts)
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
+-- Move text up and down
+keymap("v", "<A-j>", ":m .+1<CR>==", opts)
+keymap("v", "<A-k>", ":m .-2<CR>==", opts)
+keymap("v", "p", '"_dP', opts)
+
+-- Visual Block --
+-- Move text up and down
+keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
+keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
+keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
+keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+
 -- Plugins --
 
 -- NvimTree
@@ -82,8 +93,9 @@ keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
 
 -- Comment
-keymap("n", "<leader>/", "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", opts)
-keymap("x", "<leader>/", '<ESC><CMD>lua require("Comment.api").toggle_linewise_op(vim.fn.visualmode())<CR>')
+-- see https://github.com/numToStr/Comment.nvim/tree/master/lua/Comment
+keymap("n", "<leader>/", "<Plug>(comment_toggle_linewise_current)", opts)
+keymap("x", "<leader>/", "<Plug>(comment_toggle_linewise_visual)", opts)
 
 -- DAP
 keymap("n", "<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", opts)
@@ -97,28 +109,28 @@ keymap("n", "<leader>du", "<cmd>lua require'dapui'.toggle()<cr>", opts)
 keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 
 -- Lsp Stuff, Do not uncomment, for refference only.
-  -- keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-  -- keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
-  -- keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  -- keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
-  -- keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-  -- keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-  -- keymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<cr>", opts)
-  -- keymap(bufnr, "n", "<leader>li", "<cmd>LspInfo<cr>", opts)
-  -- keymap(bufnr, "n", "<leader>lI", "<cmd>LspInstallInfo<cr>", opts)
-  -- keymap(bufnr, "n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
-  -- keymap(bufnr, "n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts)
-  -- keymap(bufnr, "n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts)
-  -- keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
-  -- keymap(bufnr, "n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
-  -- keymap(bufnr, "n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
+-- keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+-- keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+-- keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+-- keymap(bufnr, "n", "gI", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+-- keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
+-- keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+-- keymap(bufnr, "n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<cr>", opts)
+-- keymap(bufnr, "n", "<leader>li", "<cmd>LspInfo<cr>", opts)
+-- keymap(bufnr, "n", "<leader>lI", "<cmd>LspInstallInfo<cr>", opts)
+-- keymap(bufnr, "n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", opts)
+-- keymap(bufnr, "n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<cr>", opts)
+-- keymap(bufnr, "n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<cr>", opts)
+-- keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
+-- keymap(bufnr, "n", "<leader>ls", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
+-- keymap(bufnr, "n", "<leader>lq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 
--- Folding 
-  -- See: https://neovim.io/doc/user/fold.html
-  -- "zf" create fold, use visual mode or zf + motion.
-  -- "zc" close fold
-  -- "zo" open_fold
-  -- "zd" delete 1 fold under curser.
+-- Folding
+-- See: https://neovim.io/doc/user/fold.html
+-- "zf" create fold, use visual mode or zf + motion.
+-- "zc" close fold
+-- "zo" open_fold
+-- "zd" delete 1 fold under curser.
 
 -- Marks
 -- ma	set mark a at current cursor location
@@ -141,4 +153,3 @@ keymap("n", "<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", opts)
 --   (q)uicklook the current node
 --   (c)opy the current node
 -- Add a childnode
-
