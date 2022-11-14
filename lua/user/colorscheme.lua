@@ -1,7 +1,7 @@
 -- Make sure to install colorschemes in pluggins.lua
 
 -- Set colorscheme here
-local colorscheme = "tokyonight"
+local colorscheme = "dracula"
 
 -- Do not change here. If scheme_type is not detected,
 -- set it in manualy in colorscheme setting below
